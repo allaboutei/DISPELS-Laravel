@@ -1,46 +1,49 @@
-
-<div class="footer-content">
+<div class="flex flex-col text-white bg-black text-sm lg:flex-row items-center">
     <!-- About Section -->
-    <div class="footer-about">
-      <h4>About DISPEL eSports</h4>
-      <p>
-        DISPEL eSports is a platform for Dota 2 enthusiasts to connect, compete, and grow as a community. Join us for tournaments, news, and team-building opportunities.
-      </p>
+    <div class="text-center">
+        <p class="text-red-500">About DISPEL eSports</p>
+        <p>
+            DISPEL eSports is a platform for Dota 2 enthusiasts to connect, compete, and grow as a community. Join us
+            for tournaments, news, and team-building opportunities.
+        </p>
     </div>
 
     <!-- Quick Links Section -->
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="newsletter.php">Newsletter</a></li>
-        <li><a href="playerreg.php">Players</a></li>
-        <li><a href="teamreg.php">Teams</a></li>
-        <li><a href="tournament.php">Tournaments</a></li>
-        <li><a href="match.php">Matches</a></li>
-      </ul>
+    <div class="text-center my-2">
+        <p class="text-red-500">Quick Links</p>
+        <ul class="flex flex-col gap-4 text-white">
+            <li><a class="hover:text-red-500" href="newsletter.php">Newsletter</a></li>
+            <li><a class="hover:text-red-500" href="playerreg.php">Players</a></li>
+            <li><a class="hover:text-red-500" href="teamreg.php">Teams</a></li>
+            <li><a class="hover:text-red-500" href="tournament.php">Tournaments</a></li>
+            <li><a class="hover:text-red-500" href="match.php">Matches</a></li>
+        </ul>
     </div>
 
     <!-- Contact Section -->
-    <div class="footer-contact">
-      <h4>Contact Us</h4>
-      <p><i class="fa-solid fa-envelope"></i>&nbsp; contact@dispel.com</p>
-      <p><i class="fa-solid fa-phone"></i>&nbsp;  +44 123 456 7890</p>
-      <p><i class="fa-solid fa-location-dot"></i>&nbsp;  123 eSports Ave, London, UK</p>
+    <div class="text-center w-full my-2">
+        <p class="text-red-500 mb-2">Contact Us</p>
+        <div class="flex flex-row items-center justify-center gap-5">
+            <p><i class="fa-solid fa-envelope"></i>&nbsp; contact@dispel.com</p>
+            <p><i class="fa-solid fa-phone"></i>&nbsp; +44 123 456 7890</p>
+            <p><i class="fa-solid fa-location-dot"></i>&nbsp; 123 eSports Ave, London, UK</p>
+        </div>
     </div>
 
     <!-- Social Media Section -->
-    <div class="footer-social">
-      <h4>Follow Us</h4>
-      <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-      <a href="#"><i class="fa-brands fa-youtube"></i></a>
-      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="#"><i class="fa-brands fa-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <div class="text-center">
+        <p class="text-red-500 my-2">Follow Us On</p>
+        <div class="flex flex-row justify-center gap-10 my-4 text-xl">
+        <a href="#"><i class="hover:text-red-500 fa-brands fa-square-facebook "></i></a>
+        <a href="#"><i class="hover:text-red-500 fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="hover:text-red-500 fa-brands fa-tiktok"></i></a>
+        <a href="#"><i class="hover:text-red-500 fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="hover:text-red-500 fa-brands fa-instagram"></i></a>
     </div>
-  </div>
+    </div>
+    <div class="flex justify-center">
+        <p>&copy; 2024 DISPEL eSports Community. All rights reserved.</p>
+    </div>
+</div>
 
-  <!-- Footer Bottom -->
-  <div class="footer-bottom">
-    <p>&copy; 2024 DISPEL eSports Community. All rights reserved.</p>
-  </div>
-
+<!-- Footer Bottom -->

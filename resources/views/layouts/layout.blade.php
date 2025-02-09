@@ -7,12 +7,12 @@
     <title>{{config('app.name')}}</title>
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class=" bg-gray-700 flex flex-col">
 @include('layouts.navibar')
 
 
-<div class="container w-full">
-
+<div class="flex flex-row justify-center items-center px-5 gap-5">
+@include('layouts.sidebar')
     @yield('content')
 </div>
 @include('layouts.footer')
