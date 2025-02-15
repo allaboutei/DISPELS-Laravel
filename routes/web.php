@@ -9,10 +9,16 @@ Route::get('', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 
+// Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+
+Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+
+Route::delete('/news/{new}', [NewsController::class, 'destroy'])->name('news.destroy');
+
 Route::get('/show-create-news', function () {
     return view('admins.news.create-news');
 })->name('show-create-news');
-Route::post('/new', [NewsController::class, 'store'])->name('new.create');
+
 
 
 Route::controller(AuthController::class)->group(function () {

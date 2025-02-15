@@ -10,10 +10,16 @@ class NewsController extends Controller
 
     public function index()
     {
-        //
-        return view('news.show');
-    }
 
+        return view('news.show', [
+            'news' => News::orderBy('created_at', 'desc')->paginate(6)
+        ]);
+    }
+    // public function show()
+    // {
+
+    //     return view('news.show', $news->id);
+    // }
 
     public function store()
     {
@@ -22,10 +28,22 @@ class NewsController extends Controller
             'body' => 'required |min:2|max:1000',
 
         ]);
-        $news = new News();
-        $news->title = request('title');
-        $news->body = request('body');
-        $news->save();
-        return view('news.show');
+        $news = News::create([
+            'title' => request('title'),
+            'body' => request('body'),
+        ]);
+
+        return redirect()->route('news')->with([
+            'status' => 'success',
+            'message' => 'News created successfully'
+        ]);
+    }
+    public function destroy(News $new)
+    {
+        $new->delete();
+        return redirect()->route('news')->with([
+            'status' => 'success',
+            'message' => 'News deleted successfully'
+        ]);
     }
 }

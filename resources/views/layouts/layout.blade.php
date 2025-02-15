@@ -17,13 +17,24 @@
         <div class="items-center w-15 text-[40px] gap-5 text-red-600 lg:flex flex-col py-20 lg:gap-10">
             @include('layouts.sidebar')
         </div>
-        <div class="flex flex-col justify-center lg:w-full">
+        <div class="flex flex-col justify-center items-center my-5 lg:w-full">
+            @include('shared.flash-message')
             @yield('content')
         </div>
     </div>
 
 
     @include('layouts.footer')
+    <script>
+        setTimeout(() => {
+            let alert = document.getElementById('alert-box');
+            if (alert) {
+                alert.style.transition = 'opacity 0.5s';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }
+        }, 5000);
+    </script>
 </body>
 
 </html>
