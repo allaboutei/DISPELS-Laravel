@@ -1,4 +1,4 @@
-<div class="flex flex-col text-white bg-black text-sm lg:flex-row items-center">
+<div class="flex flex-col text-white bg-black text-sm ">
     <!-- About Section -->
     <div class="text-center">
         <p class="text-red-500">About DISPEL eSports</p>

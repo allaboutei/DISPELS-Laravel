@@ -1,10 +1,10 @@
-<div class="flex flex-row justify-between text-xl p-5  bg-black text-white">
-    <a href=""> <i class="fa-solid fa-gamepad"></i></a>
-    <a class="logo" href="">
-        <img src="images/DISPELS.jpg" alt="DISPEL Logo">
-    </a>
+<a href=""> <i class="fa-solid fa-gamepad"></i></a>
+<a class="logo" href="{{ route('home') }}">
+    <img src="" alt="Login Banner" style="width:100%; height:auto;">
 
-    <div class="loginModule">
-        <a href="login.php"><i class="fa-solid fa-user btn"></i></a>
-    </div>
+</a>
+
+<div class="loginModule">
+    <a href="{{ route('login') }}"><button class="bg-gray-400 hover:bg-blue-700 text-white py-1 px-3 rounded"> <i
+                class="fa-solid fa-user"></i></button></a>
 </div>
