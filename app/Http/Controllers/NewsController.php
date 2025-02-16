@@ -11,15 +11,40 @@ class NewsController extends Controller
     public function index()
     {
 
-        return view('news.show', [
+        return view('news.news', [
             'news' => News::orderBy('created_at', 'desc')->paginate(6)
         ]);
     }
-    // public function show()
-    // {
+    public function show(News $new)
+    {
 
-    //     return view('news.show', $news->id);
-    // }
+        return view('news.show', compact('new'));
+    }
+
+    public function edit(News $new)
+    {
+        $editing = true;
+        return view('news.show', compact('new', 'editing'));
+    }
+
+    public function update(News $new)
+    {
+        request()->validate([
+            'title' => 'required|min:2|max:200',
+            'body' => 'required |min:2|max:1000',
+
+        ]);
+        $news = News::create([
+            'title' => request('title'),
+            'body' => request('body'),
+        ]);
+        return redirect()->route('news.show', $new->id)->with([
+            'status' => 'success',
+            'message' => 'News updated successfully'
+        ]);
+    }
+
+
 
     public function store()
     {

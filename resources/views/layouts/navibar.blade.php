@@ -5,6 +5,6 @@
 </a>
 
 <div class="loginModule">
-    <a href="{{ route('login') }}"><button class="bg-gray-400 hover:bg-blue-700 text-white py-1 px-3 rounded"> <i
+    <a href="{{ route('login') }}"><button class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded"> <i
                 class="fa-solid fa-user"></i></button></a>
 </div>

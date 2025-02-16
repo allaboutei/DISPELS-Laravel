@@ -9,7 +9,11 @@ Route::get('', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 
-// Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/news/{new}', [NewsController::class, 'show'])->name('news.show');
+
+Route::get('/news/{new}/edit', [NewsController::class, 'edit'])->name('news.edit');
+
+Route::put('/news/{new}/update', [NewsController::class, 'update'])->name('news.update');
 
 Route::post('/news', [NewsController::class, 'store'])->name('news.store');
 

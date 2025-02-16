@@ -35,7 +35,7 @@
                     </div>
 
                     <!-- Login Button -->
-                    <button class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition">
+                    <button class="bg-yellow-500 hover:bg-yellow-300 text-black font-semibold py-2 px-4 rounded transition">
                         Login
                     </button>
                 </form>

@@ -9,7 +9,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class=" bg-gray-700 flex flex-col h-full">
+<body class=" bg-gray-900 flex flex-col h-full">
     <div class="flex flex-row justify-between items-center text-xl p-5  bg-black text-white">
         @include('layouts.navibar')
     </div>
