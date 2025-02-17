@@ -16,7 +16,7 @@ Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
     // Public routes
     Route::get('/{blog}', [BlogController::class, 'show'])->name('show');
 
-    // Protected routes (Require authentication)
+    // Authenticated routes
     Route::middleware(['auth'])->group(function () {
 
         Route::resource('/', BlogController::class)

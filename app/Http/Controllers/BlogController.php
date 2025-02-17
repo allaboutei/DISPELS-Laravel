@@ -13,7 +13,7 @@ class BlogController extends Controller
     {
 
         return view('blogs.blog', [
-            'blogs' => Blog::orderBy('created_at', 'desc')->paginate(6)
+            'blogs' => Blog::orderBy('created_at', 'desc')->paginate(3)
         ]);
     }
     public function show(Blog $blog)
