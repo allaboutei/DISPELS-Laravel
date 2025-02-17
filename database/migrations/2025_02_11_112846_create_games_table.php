@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('player_allocate', function (Blueprint $table) {
+        Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('player_id')->constrained('players')->onDelete('cascade');
-            $table->foreignId('team_id')->constrained('teams')->onDelete('cascade');
-            $table->timestamp('join_at')->nullable();
-            $table->string('status', 20)->default('pending');
+            $table->string('name', 20);
+            $table->string('image', 100)->nullable();
             $table->timestamps();
         });
-
     }
 
     /**
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('allocates');
+        Schema::dropIfExists('games');
     }
 };

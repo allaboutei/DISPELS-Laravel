@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->string('matchTitle', 300);
             $table->String('format',50);
             $table->foreignId('team1_id')->constrained('teams')->onDelete('cascade');

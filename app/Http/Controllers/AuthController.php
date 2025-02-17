@@ -6,8 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\WelcomeEmail;
+// use Illuminate\Support\Facades\Mail;
+// use App\Mail\WelcomeEmail;
 
 class AuthController extends Controller
 {
@@ -18,23 +18,23 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $validated = request()->validate([
-            'name' => 'required|min:3|max:40',
+            'name' => 'required|unique:users,name|min:3|max:40',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:5',
         ]);
 
-        $user = User::create([
+        User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
 
-        Mail::to($user->email)
-        // ->cc()
-        // ->bcc()
-            ->send(new WelcomeEmail($user));
 
-        return redirect()->route('dashboard')->with('success', 'Account created successfully');
+
+        return redirect()->route('home')->with([
+            'status' => 'success',
+            'message' => 'Account created successfully'
+        ]);
     }
 
     public function login()
@@ -53,12 +53,16 @@ class AuthController extends Controller
 
         if (Auth::attempt($validated)) {
             request()->session()->regenerate();
-            return redirect()->route('dashboard')->with('success', 'Logged in success');
+            return redirect()->route('home')->with([
+                'status' => 'success',
+                'message' => 'Logged in successfully'
+            ]);
         }
 
 
-        return redirect()->route('login')->withErrors([
-            'email' => 'The email or password is incorrect',
+        return redirect()->route('login')->with([
+            'status' => 'error',
+            'message' => 'Invalid Email or Password'
         ]);
     }
 
@@ -67,6 +71,9 @@ class AuthController extends Controller
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect()->route('dashboard')->with('success', 'Logged out success');
+        return redirect()->route('home')->with([
+            'status' => 'success',
+            'message' => 'Logged out successfully'
+        ]);
     }
 }

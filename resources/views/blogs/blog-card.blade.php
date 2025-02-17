@@ -1,23 +1,20 @@
 <div class="bg-white rounded-lg shadow-md overflow-hidden">
     @if ($editing ?? false)
-    <div class="bg-black px-8 py-6 rounded-sm  ">
-        <form class="flex flex-col gap-4 text-white " action="{{ route('news.update', $new->id) }}" method="post">
+    <div class="bg-black rounded-sm  ">
+        <form class="flex flex-col gap-4 p-10 text-white " action="{{ route('blogs.update', $blog->id) }}" method="post">
             @csrf
 @method('put')
             <label for="title">News Title</label>
             <input
                 class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                type="text" name="title" id="title" value="{{ $new->title }}">
+                type="text" name="title" id="title" value="{{ $blog->title }}">
             @error('title')
                 <span class="text-sm text-red-600">{{ $message }}</span>
             @enderror
 
             <label for="body">News Body</label>
-            <textarea
-                class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                name="body" id="body">
-            {{ $new->body }}
-    </textarea>
+            <textarea class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
+                name="body" id="body">{{ $blog->body }}</textarea>
             @error('body')
                 <span class="text-sm text-red-600">{{ $message }}</span>
             @enderror
@@ -38,27 +35,34 @@
     @else
         <img class="w-full h-56 object-cover" src="{{ asset('images/news1.png') }}" alt="Blog Image">
         <div class="p-6">
-            <p class="text-gray-500 text-sm">{{ $new->created_at }} <span class="font-semibold">Michael
-                    Foster</span></p>
-            <h3 class="text-lg font-semibold mt-2">{{ $new->title }}</h3>
-            <p class="text-sm  mt-2">{{ $new->body }}</p>
+            <p class="text-gray-500 text-sm">{{ $blog->created_at->format('j M, g:i A') }}
+                <span class="font-semibold">{{$blog->user->name}}</span></p>
+            <h3 class="text-lg font-semibold mt-2">{{ $blog->title }}</h3>
+            <p class="text-sm  mt-2">{{ $blog->body }}</p>
             <div class="flex flex-row gap-5">
-                <form action="{{ route('news.destroy', $new) }}" method="post">
-                    @csrf
-                    @method('delete')
+                <a href="{{ route('blogs.show', $blog->id) }}"> <button
+                    class="bg-blue-500 mt-2 px-5 py-2 rounded-md ">Show More</button> </a>
+
+@auth
+<a href="{{ route('blogs.edit', $blog->id) }}">
+    <button class="bg-blue-500 mt-2 px-5 py-2 rounded-md ">Edit</button>
+</a>
+<form action="{{ route('blogs.destroy', $blog) }}" method="post">
+    @csrf
+    @method('delete')
 
 
-                    <button class="bg-red-500 mt-2 px-5 py-2 rounded-full ">Delete</button>
+    <button class="bg-red-500 mt-2 px-5 py-2 rounded-md ">Delete</button>
 
-                </form>
-                <a href="{{ route('news.show', $new->id) }}"> <button
-                        class="bg-blue-500 mt-2 px-5 py-2 rounded-full ">Info</button> </a>
-                <a href="{{ route('news.edit', $new->id) }}">
-                    <button class="bg-blue-500 mt-2 px-5 py-2 rounded-full ">Edit</button>
-                </a>
+</form>
+@endauth
+
             </div>
         </div>
+
+        @include('blogs.like')
     @endif
 
 
 </div>
+

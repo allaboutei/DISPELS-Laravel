@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->string('name', 300);
             $table->string('info', 300);
             $table->decimal('price', 8, 2);

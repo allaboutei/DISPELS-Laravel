@@ -15,26 +15,32 @@
                 <h2 class="text-yellow-300 text-2xl font-bold">Welcome Back</h2>
                 <p class="text-yellow-300">Login to access your eSports profile and participate in tournaments.</p>
 
-                <form action="" method="POST" class="flex flex-col gap-4 ">
+                <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-4 ">
                     @csrf
 
-                    <!-- Username Input -->
+
                     <div class="flex flex-col">
-                        <label for="username" class="text-sm">User Name</label>
+                        <label for="email" class="text-sm mb-2">Email</label>
                         <input
                             class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                            id="username" type="text" placeholder="Username" required>
+                            name="email" id="email" type="email" placeholder="example@email.com" >
+                            @error('email')
+                            <span class="text-sm text-red-600">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <!-- Password Input -->
+
                     <div class="flex flex-col">
-                        <label for="password" class="text-sm">Password</label>
+                        <label for="password" class="text-sm mb-2">Password</label>
                         <input
                             class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                            id="password" type="password" placeholder="••••••••" required>
+                            name="password" id="password" type="password" placeholder="••••••••" >
+                            @error('password')
+                            <span class="text-sm text-red-600">{{ $message }}</span>
+                        @enderror
                     </div>
 
-                    <!-- Login Button -->
+
                     <button class="bg-yellow-500 hover:bg-yellow-300 text-black font-semibold py-2 px-4 rounded transition">
                         Login
                     </button>

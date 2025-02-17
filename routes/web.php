@@ -2,27 +2,37 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\NewsController;
+
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogLikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('', [DashboardController::class, 'index'])->name('home');
 
-Route::get('/news', [NewsController::class, 'index'])->name('news');
+Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
 
-Route::get('/news/{new}', [NewsController::class, 'show'])->name('news.show');
+Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
 
-Route::get('/news/{new}/edit', [NewsController::class, 'edit'])->name('news.edit');
+    // Public routes
+    Route::get('/{blog}', [BlogController::class, 'show'])->name('show');
 
-Route::put('/news/{new}/update', [NewsController::class, 'update'])->name('news.update');
+    // Protected routes (Require authentication)
+    Route::middleware(['auth'])->group(function () {
 
-Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+        Route::resource('/', BlogController::class)
+            ->only(['store', 'edit', 'update', 'destroy'])
+            ->parameters(['' => 'blog']); // Adjust parameter binding
 
-Route::delete('/news/{new}', [NewsController::class, 'destroy'])->name('news.destroy');
+        Route::post('/{blog}/like', [BlogLikeController::class, 'like'])->name('like');
+        Route::post('/{blog}/unlike', [BlogLikeController::class, 'unlike'])->name('unlike');
+    });
+});
 
-Route::get('/show-create-news', function () {
-    return view('admins.news.create-news');
-})->name('show-create-news');
 
+
+Route::get('/show-create-blog', function () {
+    return view('admins.blogs.create-blog');
+})->name('show-create-blog')->middleware('auth');
 
 
 Route::controller(AuthController::class)->group(function () {

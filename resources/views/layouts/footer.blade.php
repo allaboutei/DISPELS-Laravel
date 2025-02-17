@@ -1,6 +1,7 @@
-<div class="flex flex-col text-white bg-black text-sm ">
+<div class="flex flex-col gap-5 text-white bg-black text-sm py-5">
+    <div class="flex flex-col lg:flex-row justify-evenly gap-5" >
     <!-- About Section -->
-    <div class="text-center">
+    <div class="text-center w-1/3">
         <p class="text-red-500">About DISPEL eSports</p>
         <p>
             DISPEL eSports is a platform for Dota 2 enthusiasts to connect, compete, and grow as a community. Join us
@@ -9,7 +10,7 @@
     </div>
 
     <!-- Quick Links Section -->
-    <div class="text-center my-2">
+    <div class="text-center">
         <p class="text-red-500">Quick Links</p>
         <ul class="flex flex-col gap-4 text-white">
             <li><a class="hover:text-red-500" href="newsletter.php">Newsletter</a></li>
@@ -21,7 +22,7 @@
     </div>
 
     <!-- Contact Section -->
-    <div class="text-center w-full my-2">
+    <div class="text-center">
         <p class="text-red-500 mb-2">Contact Us</p>
         <div class="flex flex-row items-center justify-center gap-5">
             <p><i class="fa-solid fa-envelope"></i>&nbsp; contact@dispel.com</p>
@@ -31,16 +32,18 @@
     </div>
 
     <!-- Social Media Section -->
-    <div class="text-center">
-        <p class="text-red-500 my-2">Follow Us On</p>
-        <div class="flex flex-row justify-center gap-10 my-4 text-xl">
-        <a href="#"><i class="hover:text-red-500 fa-brands fa-square-facebook "></i></a>
-        <a href="#"><i class="hover:text-red-500 fa-brands fa-youtube"></i></a>
-        <a href="#"><i class="hover:text-red-500 fa-brands fa-tiktok"></i></a>
-        <a href="#"><i class="hover:text-red-500 fa-brands fa-twitter"></i></a>
-        <a href="#"><i class="hover:text-red-500 fa-brands fa-instagram"></i></a>
-    </div>
-    </div>
+
+</div>
+<div class="text-center">
+    <p class="text-red-500 my-2">Follow Us On</p>
+    <div class="flex flex-row justify-center gap-10 my-4 text-xl">
+    <a href="#"><i class="hover:text-red-500 fa-brands fa-square-facebook "></i></a>
+    <a href="#"><i class="hover:text-red-500 fa-brands fa-youtube"></i></a>
+    <a href="#"><i class="hover:text-red-500 fa-brands fa-tiktok"></i></a>
+    <a href="#"><i class="hover:text-red-500 fa-brands fa-twitter"></i></a>
+    <a href="#"><i class="hover:text-red-500 fa-brands fa-instagram"></i></a>
+</div>
+</div>
     <div class="flex justify-center">
         <p>&copy; 2024 DISPEL eSports Community. All rights reserved.</p>
     </div>

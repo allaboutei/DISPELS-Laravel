@@ -18,32 +18,45 @@
             <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-4">
                 @csrf
 
-                <!-- Username -->
+
+                <!-- Name -->
                 <div class="flex flex-col">
-                    <label for="username" class="text-sm">User Name</label>
+                    <label for="name" class="text-sm mb-2">Name</label>
                     <input class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300 w-full"
-                           id="username" type="text" name="username" placeholder="Username" required>
+                           id="name" type="text" name="name" >
+                           @error('name')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
                 </div>
 
                 <!-- Email -->
                 <div class="flex flex-col">
-                    <label for="email" class="text-sm">Email</label>
+                    <label for="email" class="text-sm mb-2">Email</label>
                     <input class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300 w-full"
-                           id="email" type="email" name="email" placeholder="your@email.com" required>
+                           id="email" type="email" name="email" placeholder="example@email.com" >
+                           @error('email')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
                 </div>
 
                 <!-- Password -->
                 <div class="flex flex-col">
-                    <label for="password" class="text-sm">Password</label>
+                    <label for="password" class="text-sm mb-2">Password</label>
                     <input class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300 w-full"
-                           id="password" type="password" name="password" placeholder="••••••••" required>
+                           id="password" type="password" name="password" placeholder="••••••••" >
+                           @error('password')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
                 </div>
 
                 <!-- Confirm Password -->
                 <div class="flex flex-col">
-                    <label for="password_confirmation" class="text-sm">Confirm Password</label>
+                    <label for="password_confirmation" class="text-sm mb-2">Confirm Password</label>
                     <input class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300 w-full"
-                           id="password_confirmation" type="password" name="password_confirmation" placeholder="••••••••" required>
+                           id="password_confirmation" type="password" name="password_confirmation" placeholder="••••••••" >
+                           @error('password_confirmation')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
                 </div>
 
                 <!-- Register Button -->

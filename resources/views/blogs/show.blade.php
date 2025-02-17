@@ -1,4 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-    @include('shared.news-card')
+
+    @include('blogs.blog-card')
+   
 @endsection
