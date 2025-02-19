@@ -6,8 +6,11 @@ use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 class BlogController extends Controller
 {
+    use AuthorizesRequests;
 
     public function index()
     {
@@ -24,12 +27,14 @@ class BlogController extends Controller
 
     public function edit(Blog $blog)
     {
+        $this->authorize('blog.edit',$blog);
         $editing = true;
         return view('blogs.show', compact('blog', 'editing'));
     }
 
     public function update(Blog $blog)
     {
+        $this->authorize('blog.edit',$blog);
         $validated=request()->validate([
             'title' => 'required|min:2|max:200',
             'body' => 'required |min:2|max:1000',
@@ -63,6 +68,7 @@ class BlogController extends Controller
     }
     public function destroy(Blog $blog)
     {
+        $this->authorize('blog.delete',$blog);
         $blog->delete();
         return redirect()->route('blogs')->with([
             'status' => 'success',

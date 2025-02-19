@@ -16,9 +16,9 @@
     </div>
 
     <!-- Main Layout -->
-    <div class="flex flex-1 w-full gap-10 px-5">
+    <div class="flex flex-row justify-between w-full gap-10 px-5">
         <!-- Sidebar -->
-        <aside class="hidden lg:flex flex-col items-center text-xl text-red-600 w-1/6 py-20 gap-10">
+        <aside class="hidden lg:flex flex-col justify-center items-center text-xl text-red-600 w-1/6 py-20 gap-10">
             @include('layouts.sidebar')
         </aside>
 

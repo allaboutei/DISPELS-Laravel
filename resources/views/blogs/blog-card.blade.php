@@ -1,4 +1,4 @@
-<div class="w-full bg-gray-800 shadow-md rounded-md overflow-hidden">
+
     @if ($editing ?? false)
         <div class="bg-black p-5 rounded-md">
             <form class="flex flex-col gap-4 text-white" action="{{ route('blogs.update', $blog->id) }}" method="post"
@@ -45,8 +45,9 @@
             </p>
 
             <h3 class="text-lg font-semibold mt-2 text-white">{{ $blog->title }}</h3>
+            @if (request()->routeIs('blogs.show'))
             <p class="text-sm mt-2 text-gray-300">{{ $blog->body }}</p>
-
+            @endif
             <!-- Actions -->
             <div class="flex gap-3 mt-4">
                 @if (!request()->routeIs('blogs.show'))
@@ -59,6 +60,9 @@
 
 
                 @auth
+                @can('blog.edit',$blog)
+
+
                     <a href="{{ route('blogs.edit', $blog->id) }}">
                         <button class="bg-yellow-500 hover:bg-yellow-600 px-5 py-2 rounded-md text-white transition">
                             Edit
@@ -72,6 +76,7 @@
                             Delete
                         </button>
                     </form>
+                    @endcan
                 @endauth
                 @include('blogs.like')
             </div>
@@ -79,4 +84,4 @@
 
 
     @endif
-</div>
+
