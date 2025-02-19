@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Admin\DashboardController As AdminDashboardController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogLikeController;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +30,9 @@ Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
 
 
 
-Route::get('/admin', [AdminDashboardController::class,'index'])->name('admin.dashboard')->middleware(['auth','can:admin']);
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'can:admin']);
+
+Route::get('/admin/blogs', [AdminDashboardController::class, 'create_blog'])->name('admin.blogs')->middleware(['auth', 'can:admin']);
 
 
 Route::controller(AuthController::class)->group(function () {

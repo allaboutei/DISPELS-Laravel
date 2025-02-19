@@ -13,26 +13,26 @@ class BlogPolicy
     /**
      * Determine whether the user can create models.
      */
-    // public function create(User $user): bool
-    // {
-    //     return ($user->is_admin || $user->is_host);
-    // }
+    public function create(User $user): bool
+    {
+        return ($user->is_admin || $user->is_host);
+    }
 
     /**
      * Determine whether the user can update the model.
      */
-    // public function update(User $user, Blog $blog): bool
-    // {
-    //     return ($user->is_admin || $user->is_host);
-    // }
+    public function update(User $user, Blog $blog): bool
+    {
+        return ($user->is_admin || ($user->is_host && $user->id===$blog->user->id));
+    }
 
     /**
      * Determine whether the user can delete the model.
      */
-    // public function delete(User $user, Blog $blog): bool
-    // {
-    //     return ($user->is_admin || $user->is_host);
-    // }
+    public function delete(User $user, Blog $blog): bool
+    {
+        return ($user->is_admin || ($user->is_host && $user->id===$blog->user->id));
+    }
 
 
 }

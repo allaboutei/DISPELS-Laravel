@@ -16,4 +16,10 @@ class DashboardController extends Controller
         }
         return view('admins.dashboard');
     }
+    public function create_blog(){
+        if(!Gate::allows('admin')){
+            abort(403);
+        }
+        return view('admins.create-blog');
+    }
 }

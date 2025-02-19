@@ -60,7 +60,7 @@
 
 
                 @auth
-                @can('blog.edit',$blog)
+                @can('update',$blog)
 
 
                     <a href="{{ route('blogs.edit', $blog->id) }}">

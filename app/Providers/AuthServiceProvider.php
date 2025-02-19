@@ -28,13 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
 
-        Gate::define('blog.delete', function (User $user,Blog $blog): bool {
-            return (bool) $user->is_admin  || ($user->is_host && $user->id===$blog->user->id);
-        });
-
-        Gate::define('blog.edit', function (User $user,Blog $blog): bool {
-            return (bool) $user->is_admin  || ($user->is_host && $user->id===$blog->user->id);
-        });
+    
 
     }
 }
