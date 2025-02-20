@@ -12,12 +12,18 @@
                     class="fa-solid fa-user"></i></button></a>
     @endguest
     @auth
+        @can(['admin'])
+            <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+        @elsecan('host')
+            <a href="{{ route('admin.dashboard') }}">Host Dashboard</a>
+        @endcan
+
         <p class="text-sm">{{ Auth::user()->name }}</p>
-        <a href="#">
-            <button class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded">
+
+        <a href="#"><button class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded">
                 <i class="fa-solid fa-user"></i>
-            </button>
-        </a>
+            </button></a>
+
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit" class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded">

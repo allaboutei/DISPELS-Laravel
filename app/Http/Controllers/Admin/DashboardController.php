@@ -11,15 +11,10 @@ class DashboardController extends Controller
 {
     //
     public function index(){
-        if(!Gate::allows('admin')){
-            abort(403);
-        }
         return view('admins.dashboard');
     }
     public function create_blog(){
-        if(!Gate::allows('admin')){
-            abort(403);
-        }
+
         return view('admins.create-blog');
     }
 }

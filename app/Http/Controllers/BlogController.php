@@ -52,7 +52,6 @@ class BlogController extends Controller
 
     public function store()
     {
-        $this->authorize('create');
         $validated=request()->validate([
             'title' => 'required|min:2|max:200',
             'body' => 'required |min:2|max:1000',

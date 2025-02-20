@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 @section('content')
     @auth
-    @can(['admin','create'])
+    @can('create', App\Models\Blog::class)
+
+
 
 
         <div class=" bg-black px-8 py-6 rounded-lg shadow-lg lg:w-1/2">

@@ -20,7 +20,7 @@
         @endforelse
     </div>
     <!-- Pagination -->
-    <div class="mt-8 flex justify-center text-yellow-300">
+    <div class="mt-8 flex justify-center  text-black">
         {{ $blogs->withQueryString()->links('pagination::tailwind') }}
     </div>
 @endsection

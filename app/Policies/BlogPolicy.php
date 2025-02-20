@@ -15,7 +15,7 @@ class BlogPolicy
      */
     public function create(User $user): bool
     {
-        return ($user->is_admin || $user->is_host);
+        return $user->is_admin || $user->is_host;
     }
 
     /**
@@ -25,7 +25,7 @@ class BlogPolicy
     {
         return ($user->is_admin || ($user->is_host && $user->id===$blog->user->id));
     }
-
+    
     /**
      * Determine whether the user can delete the model.
      */
