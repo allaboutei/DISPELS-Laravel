@@ -20,7 +20,7 @@
 
         <p class="text-sm">{{ Auth::user()->name }}</p>
 
-        <a href="#"><button class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded">
+        <a href="{{route('users.show',Auth::user()->id)}}"><button class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded">
                 <i class="fa-solid fa-user"></i>
             </button></a>
 

@@ -8,7 +8,7 @@
     </div>
 
     <!-- Blog Posts -->
-    <div class="w-full bg-gray-800 shadow-md rounded-md overflow-hidden">
+    <div class="w-full bg-gray-800 rounded-md overflow-hidden">
         @forelse ($blogs as $blog)
             @include('blogs.blog-card')
             <hr>

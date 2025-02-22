@@ -12,7 +12,6 @@ class Blog extends Model
         'title',
         'body',
         'image',
-
     ];
 
     public function likes()

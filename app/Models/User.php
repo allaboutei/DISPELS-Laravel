@@ -57,4 +57,7 @@ class User extends Authenticatable
     public function likesBlog(Blog $blog){
         return $this->likes()->where('blog_id',$blog->id)->exists();
     }
+    public function player(){
+        return $this->hasOne(Player::class);
+    }
 }
