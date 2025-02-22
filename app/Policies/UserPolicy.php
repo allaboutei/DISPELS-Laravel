@@ -15,10 +15,17 @@ class UserPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user): bool
-    {
-        return ($user->is_admin || $user->id===Auth::user()->id);
-    }
+
+
+
+public function update(User $user, User $model): bool
+{
+    return $user->is_admin || $user->is($model);
+}
+
+
+
+
 
     /**
      * Determine whether the user can delete the model.

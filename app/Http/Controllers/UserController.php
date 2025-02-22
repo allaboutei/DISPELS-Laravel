@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -22,6 +23,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+
         return view('users.show', compact('user'));
     }
 
@@ -30,9 +32,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $this->authorize('update',$user);
-$editing=true;
-        return view('users.show', compact('user','editing'));
+        
+        $this->authorize('update', $user);
+        $editing = true;
+        return view('users.show', compact('user', 'editing'));
     }
 
     /**
@@ -40,21 +43,34 @@ $editing=true;
      */
     public function update(User $user)
     {
-        //
-        $this->authorize('update',$user);
-        $validated=request()->validate([
-            'name'=>'required|min:5|max:100',
-            'image'=>'nullable|image'
-        ]);
-// dd($validated);
-if( request()->has('image')){
-    $imagePath=request('image')->file('image')->store('profile','public');
-    $validated['image']=$imagePath;
-}
+        $this->authorize('update', $user);
 
-        $user->update($validated);
-        return redirect(route('users.show',Auth::user()->id));
+        $validated = request()->validate([
+            'name' => 'required|min:5|max:100',
+            'image' => 'nullable|image'
+        ]);
+
+        // Debug to check if validated data exists
+        // dd($validated);
+
+        if (request()->hasFile('image')) {
+            $imagePath = request()->file('image')->store('profile', 'public');
+            $validated['image'] = $imagePath;
+
+            // Optional: Delete old image if needed
+            if ($user->image) {
+                Storage::disk('public')->delete($user->image);
+            }
+        }
+
+       $user->update($validated);
+
+        return redirect(route('users.show', $user->id))->with([
+            'status' => 'success',
+            'message' => 'Profile successfully updated'
+        ]);
     }
+
 
     /**
      * Remove the specified resource from storage.

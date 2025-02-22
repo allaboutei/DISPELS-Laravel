@@ -41,7 +41,7 @@ class BlogController extends Controller
 
         ]);
         $validated['user_id']=Auth::user()->id;
-        $blog->save($validated);
+        $blog->update($validated);
         return redirect()->route('blogs.show', $blog->id)->with([
             'status' => 'success',
             'message' => 'blogs updated successfully'

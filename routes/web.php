@@ -29,7 +29,7 @@ Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
     });
 });
 
-Route::resource( 'users',UserController::class)->only('show','edit','delete','update')->middleware('auth');
+Route::resource( 'users',UserController::class)->only('show','edit','delete','update')->middleware(['auth']);
 
 
 

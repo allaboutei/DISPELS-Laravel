@@ -6,18 +6,14 @@
     <i class="fa-solid fa-gamepad"></i>
 </a>
 <div class="flex flex-row gap-4 items-center">
-    @guest
-        <a href="{{ route('login') }}"><button
-                class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded"> <i
-                    class="fa-solid fa-user"></i></button></a>
-    @endguest
+
     @auth
         @can(['admin'])
             <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
         @elsecan('host')
             <a href="{{ route('admin.dashboard') }}">Host Dashboard</a>
         @endcan
-
+       
         <p class="text-sm">{{ Auth::user()->name }}</p>
 
         <a href="{{route('users.show',Auth::user()->id)}}"><button class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded">
@@ -32,5 +28,9 @@
         </form>
 
     @endauth
-
+    @guest
+    <a href="{{ route('login') }}"><button
+            class="bg-gray-400 hover:bg-yellow-300 hover:text-black text-white py-1 px-3 rounded"> <i
+                class="fa-solid fa-user"></i></button></a>
+@endguest
 </div>

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image'
     ];
 
     /**
@@ -48,16 +49,27 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->belongsToMany(Blog::class,'blog_like')->withTimestamps();
+        return $this->belongsToMany(Blog::class, 'blog_like')->withTimestamps();
     }
-    public function blogs(){
+    public function blogs()
+    {
         return $this->hasMany(Blog::class);
     }
 
-    public function likesBlog(Blog $blog){
-        return $this->likes()->where('blog_id',$blog->id)->exists();
+    public function likesBlog(Blog $blog)
+    {
+        return $this->likes()->where('blog_id', $blog->id)->exists();
     }
-    public function player(){
+    public function player()
+    {
         return $this->hasOne(Player::class);
+    }
+    public function getImageURL()
+    {
+        if ($this->image) {
+            return url('storage/' . $this->image);
+        } else {
+            return asset('images/DISPELS.jpg');
+        }
     }
 }

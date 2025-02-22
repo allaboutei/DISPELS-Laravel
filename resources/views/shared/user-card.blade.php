@@ -8,17 +8,19 @@
             <i class="fa-solid fa-ban"></i> Cancel
         </a>
         @else
+        @can('update', $user)
         <a href="{{ route('users.edit', $user->id) }}"
             class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition">
             <i class="fa-solid fa-pen-to-square"></i> Edit
         </a>
+@endcan
         @endif
 
     </div>
 
     <!-- Profile Image -->
     <div class="flex flex-col items-center mb-6">
-        <img class="w-24 h-24 rounded-full shadow-lg border-4 border-yellow-400" src="{{ asset('images/DISPELS.jpg') }}"
+        <img class="w-24 h-24 rounded-full shadow-lg border-4 border-yellow-400" src="{{ $user->getImageURL() }}"
             alt="Profile Image">
         <p class="text-xl font-semibold mt-2">{{ $user->name }}</p>
     </div>
@@ -26,6 +28,7 @@
 
  <div class="grid grid-cols-1 md:grid-cols-1 ">
     <div class="p-4 border border-yellow-400 rounded-lg">
+        @can('update', $user)
         <form class="flex flex-col gap-5 text-white " action="{{route('users.update',$user->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
@@ -48,6 +51,8 @@
                 Upload
             </button>
         </form>
+
+        @endcan
     </div>
 </div>
 @else
@@ -57,13 +62,13 @@
     <div class="p-4 border border-yellow-400 rounded-lg">
         <h3 class="text-lg font-semibold text-yellow-300 mb-3">User Perspective</h3>
         <div class="bg-gray-800 p-3 rounded-lg shadow">
-            <p><span class="font-semibold text-gray-400">User Name:</span> Si Thu</p>
+            <p><span class="font-semibold text-gray-400">User Name:</span> {{$user->name}}</p>
         </div>
         <div class="bg-gray-800 p-3 rounded-lg shadow mt-2">
-            <p><span class="font-semibold text-gray-400">User Email:</span> kst@gmail.com</p>
+            <p><span class="font-semibold text-gray-400">User Email:</span> {{$user->email}}</p>
         </div>
         <div class="bg-gray-800 p-3 rounded-lg shadow mt-2">
-            <p><span class="font-semibold text-gray-400">Created:</span> October 06, 2024</p>
+            <p><span class="font-semibold text-gray-400">Created:</span> {{$user->created_at}}</p>
         </div>
     </div>
 

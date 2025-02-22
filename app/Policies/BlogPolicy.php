@@ -23,15 +23,15 @@ class BlogPolicy
      */
     public function update(User $user, Blog $blog): bool
     {
-        return ($user->is_admin || ($user->is_host && $user->id===$blog->user->id));
+        return $user->is_admin || ($user->is_host && $user->is($blog->user));
     }
-    
+
     /**
      * Determine whether the user can delete the model.
      */
     public function delete(User $user, Blog $blog): bool
     {
-        return ($user->is_admin || ($user->is_host && $user->id===$blog->user->id));
+        return $user->is_admin || ($user->is_host && $user->is($blog->user));
     }
 
 
