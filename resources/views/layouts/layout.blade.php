@@ -11,26 +11,28 @@
 
 <body class="bg-gray-900 flex flex-col min-h-screen">
     <!-- Navbar -->
-    <div class="flex justify-between items-center text-xl p-5 bg-black text-white">
-        @include('layouts.navibar')
-    </div>
+    <header class=" w-full bg-black text-white shadow-lg z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            @include('layouts.navibar')
+        </div>
+    </header>
 
     <!-- Main Layout -->
-    <div class="flex flex-row justify-between w-full gap-10 px-5">
-        <!-- Sidebar -->
-        <aside class="hidden lg:flex flex-col justify-center items-center text-xl text-red-600 w-1/6 py-20 gap-10">
+    <div class="flex flex-col lg:flex-row container mx-auto min-h-screen mt-20 px-6 gap-6">
+        <!-- Sidebar (Visible on LG Screens) -->
+        <aside class="hidden lg:flex flex-col justify-center items-center text-red-600 w-48 py-10 gap-6">
             @include('layouts.sidebar')
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 w-full lg:w-5/6 bg-gray-800 text-white rounded-lg p-6 shadow-lg">
+        <main class="flex-1 bg-gray-800 text-white rounded-lg p-6 shadow-lg">
             @include('shared.flash-message')
             @yield('content')
         </main>
     </div>
 
     <!-- Footer -->
-    <footer class="mt-auto">
+    <footer class=" w-full bg-black text-gray-400 text-center py-4">
         @include('layouts.footer')
     </footer>
 
@@ -40,14 +42,12 @@
             setTimeout(() => {
                 let alert = document.getElementById('alert-box');
                 if (alert) {
-                    alert.style.transition = 'opacity 0.5s ease-out';
-                    alert.style.opacity = '0';
+                    alert.classList.add('opacity-0', 'transition-opacity', 'duration-500');
                     setTimeout(() => alert.remove(), 500);
                 }
             }, 5000);
         });
     </script>
 </body>
-
 
 </html>

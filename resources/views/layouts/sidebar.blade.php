@@ -1,4 +1,4 @@
-<div class="flex flex-col  items-center w-15 text-[40px] gap-5 text-red-600  lg:py-20 lg:gap-10">
+<div class="flex flex-col  items-center text-[30px] gap-5 text-red-600  lg:py-20 lg:gap-10">
 
 
     <a href="{{ route('blogs') }}"><i

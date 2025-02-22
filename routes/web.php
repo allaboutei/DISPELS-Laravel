@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogLikeController;
+use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,10 @@ Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
 });
 
 Route::resource( 'users',UserController::class)->only('show','edit','delete','update')->middleware(['auth']);
+
+Route::get('/players', [PlayerController::class, 'index'])->name('players');
+
+Route::get('/teams', [TeamController::class, 'index'])->name('teams');
 
 
 
