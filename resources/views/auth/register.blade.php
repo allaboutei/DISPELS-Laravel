@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- Register Button -->
-                <button type="submit" class="bg-yellow-300 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition">
+                <button type="submit" class="btn-form">
                     Register
                 </button>
             </form>

@@ -41,7 +41,7 @@
                     </div>
 
 
-                    <button class="bg-yellow-300 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition">
+                    <button class="btn-form">
                         Login
                     </button>
                 </form>

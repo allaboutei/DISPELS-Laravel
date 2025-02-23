@@ -19,14 +19,16 @@
 
     <!-- Main Layout -->
     <div class="flex flex-col lg:flex-row container mx-auto min-h-screen mt-20 px-6 gap-6">
+
         <!-- Sidebar (Visible on LG Screens) -->
         <aside class="hidden lg:flex flex-col justify-center items-center text-red-600 w-48 py-10 gap-6">
             @include('layouts.sidebar')
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 bg-gray-800 text-white rounded-lg p-6 shadow-lg">
+        <main class="flex-1 bg-gray-500 text-white rounded-lg p-6 shadow-lg">
             @include('shared.flash-message')
+            @include('shared.search-bar')
             @yield('content')
         </main>
     </div>

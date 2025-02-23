@@ -35,6 +35,10 @@ Route::resource( 'users',UserController::class)->only('show','edit','delete','up
 
 Route::get('/players', [PlayerController::class, 'index'])->name('players');
 
+Route::get('/players/join', [PlayerController::class, 'join'])->name('players.join')->middleware('auth');
+
+
+
 Route::get('/teams', [TeamController::class, 'index'])->name('teams');
 
 
