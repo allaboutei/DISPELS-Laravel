@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Player;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -32,7 +33,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        
+
         $this->authorize('update', $user);
         $editing = true;
         return view('users.show', compact('user', 'editing'));

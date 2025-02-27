@@ -8,15 +8,26 @@
                 <p class="text-gray-400 mb-2">This is our players</p>
             </div>
 
-
             @auth
-                @if (!auth()->user()->is_admin && !auth()->user()->is_host)
+            @if (!auth()->user()->is_admin && !auth()->user()->is_host)
+                @php
+                    $is_player = \App\Models\Player::where('user_id', auth()->id())->first();
+                @endphp
+
+                @if ($is_player)
+                    <div>
+                        <span>You are already registered as a player!</span>
+                        <a class="btn-blue ml-5" href="{{ route('users.show', Auth::user()->id) }}">Go to Profile</a>
+                    </div>
+                @else
                     <div>
                         <span>Ready to join the teams and compete in exciting matches?</span>
                         <a class="btn-blue ml-5" href="{{ route('players.join') }}">Fill Form</a>
                     </div>
                 @endif
-            @endauth
+            @endif
+        @endauth
+
 
             @guest
                 <div>

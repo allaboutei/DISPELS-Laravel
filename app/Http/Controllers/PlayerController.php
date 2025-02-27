@@ -24,11 +24,24 @@ class PlayerController extends Controller
         $games = Game::with('roles')->get();
         return view('players.create-player', compact('games'));
     }
-    public function store(User $user)
+    public function store()
     {
         $validated = request()->validate([
             'gamertag' => 'required|min:5|max:50',
-            'body' => 'required |min:2|max:1000',
+            'phone' => 'required|min:5|max:15',
+            'game_id' => 'required',
+            'role_id' => 'required',
+            'image' => 'nullable|image',
+        ]);
+        $validated['user_id'] = Auth::user()->id;
+        $validated['email'] = Auth::user()->email;
+        $validated['name'] = Auth::user()->name;
+        // dd($validated);
+
+        Player::create($validated);
+        return redirect()->route('players')->with([
+            'status' => 'success',
+            'message' => 'Successfully enrolled as a player'
         ]);
     }
 }

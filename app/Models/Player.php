@@ -7,17 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     //
-    protected $fillable = [
-        'user_id',
-        'game_id',
-        'name',
-        'image',
-        'email',
-        'phone',
-        'gamertag',
-        'role',
-        'status'
-    ];
+
+    protected $fillable = ['gamertag', 'body', 'game_id', 'image', 'phone', 'role_id', 'user_id', 'email', 'name'];
+
     public function game()
     {
         return $this->belongsTo(Game::class);
@@ -26,4 +18,13 @@ class Player extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function player()
+    {
+        return $this->belongsTo(Player::class);
+    }
+    public function role()
+{
+    return $this->belongsTo(Role::class);
+}
+
 }

@@ -37,8 +37,7 @@ Route::get('/players', [PlayerController::class, 'index'])->name('players');
 
 Route::get('/players/join', [PlayerController::class, 'join'])->name('players.join')->middleware('auth');
 
-Route::post('/players/store', [PlayerController::class, 'store'])->name('players.store')->middleware('auth');
-
+Route::post('/players/create', [PlayerController::class, 'store'])->name('players.store')->middleware(['auth']);
 
 
 Route::get('/teams', [TeamController::class, 'index'])->name('teams');

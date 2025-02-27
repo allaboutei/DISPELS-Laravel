@@ -16,4 +16,8 @@ class Role extends Model
     {
         return $this->belongsTo(Game::class);
     }
+    public function players()
+    {
+        return $this->hasMany(Player::class);
+    }
 }
