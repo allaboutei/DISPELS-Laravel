@@ -72,23 +72,28 @@
                 </div>
             </div>
 
-<!-- Player Perspective -->
-<div class="p-4 border border-yellow-400 rounded-lg">
-    <h3 class="text-lg font-semibold text-yellow-300 mb-3">Player Perspective</h3>
-    <div class="bg-gray-800 p-3 rounded-lg shadow">
-        <p><span class="font-semibold text-gray-400">Gaming Name:</span>
-            {{ $user->player?->name ?? 'Not Registered' }}</p>
-    </div>
+            @if ($user->is_admin == false && $user->is_host == false)
+                <!-- Player Perspective -->
+                <div class="p-4 border border-yellow-400 rounded-lg">
+                    <h3 class="text-lg font-semibold text-yellow-300 mb-3">Player Perspective</h3>
+                    <div class="bg-gray-800 p-3 rounded-lg shadow">
+                        <p><span class="font-semibold text-gray-400">Gaming Name:</span>
+                            {{ $user->player?->name ?? 'Not Registered' }}</p>
+                    </div>
 
-    <div class="bg-gray-800 p-3 rounded-lg shadow mt-2">
-        <p><span class="font-semibold text-gray-400">In-Game Role:</span>
-            {{ $user->player?->role?->name ?? 'Not Registered' }}</p>
-    </div>
+                    <div class="bg-gray-800 p-3 rounded-lg shadow mt-2">
+                        <p><span class="font-semibold text-gray-400">In-Game Role:</span>
+                            {{ $user->player?->role?->name ?? 'Not Registered' }}</p>
+                    </div>
 
-    <div class="bg-gray-800 p-3 rounded-lg shadow mt-2">
-        <p><span class="font-semibold text-gray-400">Current Team:</span> Galactic Guardians</p>
-    </div>
-</div>
+                    <div class="bg-gray-800 p-3 rounded-lg shadow mt-2">
+                        <p><span class="font-semibold text-gray-400">Current Team:</span> Galactic Guardians</p>
+                    </div>
+                </div>
+            @endif
+
+
+
 
 
         </div>
