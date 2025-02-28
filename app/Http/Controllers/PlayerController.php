@@ -16,7 +16,9 @@ class PlayerController extends Controller
     use AuthorizesRequests;
     public function index()
     {
-        return view('players.player');
+        return view('players.player',[
+            'players' => Player::with('role')->latest()->get()
+        ]);
     }
     public function join(User $user)
     {

@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="bg-gray-800 p-3 rounded-lg shadow mt-2">
-                        <p><span class="font-semibold text-gray-400">Current Team:</span> Galactic Guardians</p>
+                        <p><span class="font-semibold text-gray-400">Current Team:</span> Not Implemented Yet</p>
                     </div>
                 </div>
             @endif

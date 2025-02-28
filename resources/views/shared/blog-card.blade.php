@@ -39,7 +39,7 @@
             <!-- Image Section -->
             <div class="w-full lg:w-1/3 flex justify-center">
                 <img class="w-full max-w-xs lg:max-w-full h-48 object-cover rounded-md shadow-md"
-                    src="{{ asset('images/news1.png') }}" alt="Blog Image">
+                    src="{{ $blog->getImageURL() }}" alt="Blog Image">
             </div>
 
             <!-- Content Section -->

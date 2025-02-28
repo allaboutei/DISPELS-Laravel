@@ -17,4 +17,8 @@ class DashboardController extends Controller
 
         return view('admins.create-blog');
     }
+    public function create_team(){
+
+        return view('admins.create-team');
+    }
 }

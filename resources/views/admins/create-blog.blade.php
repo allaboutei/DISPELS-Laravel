@@ -6,10 +6,10 @@
 
 
 
-        <div class=" bg-black px-8 py-6 rounded-lg shadow-lg lg:w-1/2">
-            <div class="flex flex-col gap-6">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-md">
                 <h2 class="text-yellow-300 text-2xl font-bold">Upload the News</h2>
-                <form class="flex flex-col gap-4 text-white " action="{{ route('blogs.store') }}" method="post">
+                <form class="flex flex-col gap-4 text-white " action="{{ route('blogs.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <label for="title">News Title</label>

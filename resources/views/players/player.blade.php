@@ -5,7 +5,7 @@
         <div class="flex flex-row justify-between items-center mb-10">
             <div>
                 <h2 class="text-3xl font-bold text-yellow-300">Players</h2>
-                <p class="text-gray-400 mb-2">This is our players</p>
+                <p class="text-gray-400 mb-2">This is our registered players</p>
             </div>
 
             @auth
@@ -40,7 +40,12 @@
 
         <!-- Players Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            @forelse ($players as $player)
             @include('shared.player-card')
+ @empty
+
+ @endforelse
+
         </div>
     </div>
 @endsection

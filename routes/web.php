@@ -47,6 +47,7 @@ Route::get('/teams', [TeamController::class, 'index'])->name('teams');
 Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'can:host']);
 
 Route::get('/admin/blogs', [AdminDashboardController::class, 'create_blog'])->name('admin.blogs')->middleware(['auth', 'can:host']);
+Route::get('/admin/teams', [AdminDashboardController::class, 'create_team'])->name('admin.teams')->middleware(['auth', 'can:host']);
 
 
 Route::controller(AuthController::class)->group(function () {

@@ -14,6 +14,14 @@ class Blog extends Model
         'image',
     ];
 
+    public function getImageURL()
+    {
+        if ($this->image) {
+            return url('storage/' . $this->image);
+        } else {
+            return asset('images/news2.png');
+        }
+    }
     public function likes()
     {
         return $this->belongsToMany(User::class,'blog_like','blog_id')->withTimestamps();
