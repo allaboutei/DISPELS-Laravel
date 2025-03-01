@@ -18,6 +18,10 @@ class Player extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
     public function player()
     {
         return $this->belongsTo(Player::class);

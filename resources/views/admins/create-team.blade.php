@@ -1,58 +1,65 @@
 @extends('layouts.layout')
 
 @section('content')
+@auth
+        @can('create', App\Models\Team::class)
     <div class="container mx-auto px-6">
         <div class="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold text-yellow-300 mb-4">Create a New Team</h2>
-
-            @if (session('status'))
-                <div class="bg-green-500 text-white p-3 rounded mb-4">
-                    {{ session('message') }}
-                </div>
-            @endif
-
-            <form action="" method="POST" enctype="multipart/form-data" class="space-y-4">
+            <h2 class="text-yellow-300 text-2xl font-bold">Create the Team</h2>
+            <form class="flex flex-col gap-4 text-white " action="{{route('teams.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
-                <!-- Team Name -->
+                <label class="text-white font-semibold" for="name">Team Name</label>
+                <input
+                    class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
+                    type="text" name="name" id="name">
+                @error('name')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
 
-                    <label for="name" class="block text-white font-semibold">Team Name</label>
-                    <input type="text" name="name" id="name"
-                        class="w-full bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:ring focus:ring-yellow-300"
-                        placeholder="Enter team name" required>
-                    @error('name')
-                        <span class="text-sm text-red-500">{{ $message }}</span>
-                    @enderror
+                <label class="text-white font-semibold" for="phone">Contact Number</label>
+                <input type="text" name="phone" id="phone"
+                    class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:ring focus:ring-yellow-300"
+                    placeholder="Enter Phone Number">
+                @error('phone')
+                    <span class="text-sm text-red-500">{{ $message }}</span>
+                @enderror
 
+                <label class="text-white font-semibold" for="email">Team Email</label>
+                <input type="email"
+                    class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
+                    name="email" id="email">
 
-                <!-- Team Logo -->
+                @error('email')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
 
-                    <label for="logo" class="block text-white font-semibold">Team Logo</label>
-                    <input type="file" name="logo" id="logo"
-                        class="w-full bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:ring focus:ring-yellow-300">
-                    @error('logo')
-                        <span class="text-sm text-red-500">{{ $message }}</span>
-                    @enderror
+                <label class="text-white font-semibold" for="image">Team Logo</label>
+                <input
+                    class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
+                    type="file" name="logo" id="logo">
+                @error('logo')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
 
-
-                <!-- Select Game -->
+                <label class="text-white font-semibold" for="game_id">Select Game</label>
                 <select name="game_id" id="game_id"
                     class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:ring focus:ring-yellow-300">
                     <option value="" disabled selected>Select a game</option>
-
+                    @foreach ($games as $game)
+                        <option value="{{ $game->id }}">{{ $game->name }}</option>
+                    @endforeach
                 </select>
                 @error('game_id')
-                <span class="text-sm text-red-500">{{ $message }}</span>
-            @enderror
+                    <span class="text-sm text-red-500">{{ $message }}</span>
+                @enderror
 
-                <!-- Submit Button -->
-
-                    <button type="submit"
-                        class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
-                        Create Team
-                    </button>
-
+                <button class="btn-yellow">
+                    Create
+                </button>
             </form>
         </div>
     </div>
+    @endcan
+    @endauth
 @endsection

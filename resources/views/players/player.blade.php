@@ -43,7 +43,7 @@
             @forelse ($players as $player)
             @include('shared.player-card')
  @empty
-
+<p>No Player Found</p>
  @endforelse
 
         </div>

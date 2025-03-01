@@ -41,6 +41,7 @@ Route::post('/players/create', [PlayerController::class, 'store'])->name('player
 
 
 Route::get('/teams', [TeamController::class, 'index'])->name('teams');
+Route::post('/teams/create', [TeamController::class, 'store'])->name('teams.store')->middleware(['auth', 'can:host']);
 
 
 

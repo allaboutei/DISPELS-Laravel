@@ -12,11 +12,24 @@ class Team extends Model
         'game_id',
         'name',
         'logo',
+        'phone',
         'email',
     ];
 
     public function game()
     {
         return $this->belongsTo(Game::class);
+    }
+    public function players()
+    {
+        return $this->hasMany(PLayer::class);
+    }
+    public function getImageURL()
+    {
+        if ($this->logo) {
+            return url('storage/' . $this->logo);
+        } else {
+            return asset('images/DISPELS.jpg');
+        }
     }
 }
