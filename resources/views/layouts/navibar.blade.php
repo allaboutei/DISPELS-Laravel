@@ -7,7 +7,7 @@
 
     <!-- Navigation Links -->
     <div class="flex items-center gap-6">
-        <a href="#" class="text-yellow-400 text-xl hover:text-yellow-300 transition">
+        <a href="{{route('games')}}" class="text-yellow-400 text-xl hover:text-yellow-300 transition">
             <i class="fa-solid fa-gamepad"></i>
         </a>
 

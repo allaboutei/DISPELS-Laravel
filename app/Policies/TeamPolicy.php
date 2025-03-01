@@ -24,7 +24,7 @@ class TeamPolicy
      */
     public function update(User $user, Team $team): bool
     {
-        return $user->is_admin || ($user->is_host && $user->is($team->user));
+        return $user->is_admin || $user->is_host;
     }
 
     /**
@@ -32,7 +32,7 @@ class TeamPolicy
      */
     public function delete(User $user, Team $team): bool
     {
-        return $user->is_admin || ($user->is_host && $user->is($team->user));
+        return $user->is_admin || $user->is_host;
     }
 
 }

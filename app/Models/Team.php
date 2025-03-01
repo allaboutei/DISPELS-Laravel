@@ -20,10 +20,12 @@ class Team extends Model
     {
         return $this->belongsTo(Game::class);
     }
+
     public function players()
     {
         return $this->hasMany(PLayer::class);
     }
+    
     public function getImageURL()
     {
         if ($this->logo) {

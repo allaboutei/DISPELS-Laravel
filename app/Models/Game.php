@@ -25,4 +25,13 @@ class Game extends Model
     public function roles(){
         return $this->hasMany(related: Role::class);
     }
+    public function getImageURL(){
+        if ($this->image) {
+            return url('images/' . $this->image);
+        } else {
+            return asset('images/DISPELS.jpg');
+        }
+    }
+
+
 }
