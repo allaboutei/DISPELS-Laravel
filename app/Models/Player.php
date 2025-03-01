@@ -18,17 +18,17 @@ class Player extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function team()
+    public function teams()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsToMany(Team::class, 'player_allocate')->withPivot('joined_at')->withTimestamps();
     }
+
     public function player()
     {
         return $this->belongsTo(Player::class);
     }
     public function role()
-{
-    return $this->belongsTo(Role::class);
-}
-
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

@@ -27,6 +27,11 @@ class TeamPolicy
         return $user->is_admin || $user->is_host;
     }
 
+    public function edit(User $user, Team $team): bool
+    {
+        return $user->is_admin || $user->is_host;
+    }
+
     /**
      * Determine whether the user can delete the model.
      */

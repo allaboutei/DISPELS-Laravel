@@ -22,10 +22,11 @@ class Team extends Model
     }
 
     public function players()
-    {
-        return $this->hasMany(PLayer::class);
-    }
-    
+{
+    return $this->belongsToMany(Player::class, 'player_allocate')->withPivot( 'joined_at')->withTimestamps();
+}
+
+
     public function getImageURL()
     {
         if ($this->logo) {

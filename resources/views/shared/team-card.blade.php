@@ -6,7 +6,7 @@
     <img src="{{ $team->game->getImageURL() }}" alt="{{ $team->game->name }}" class="w-12 h-12 mb-3 mx-auto ">
 
     <!-- Team Logo -->
-    <img src="{{ asset('images/DISPELS.jpg') }}" alt="{{ $team->name }}" class="w-24 h-24 rounded-full mx-auto mb-3">
+    <img src="{{ $team->getImageURL() }}" alt="{{ $team->name }}" class="w-24 h-25 mx-auto mb-3">
 
     <!-- Team Name -->
     <h2 class="text-lg font-semibold text-white">{{ $team->name }}</h2>
