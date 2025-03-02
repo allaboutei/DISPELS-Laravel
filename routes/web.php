@@ -8,6 +8,7 @@ use App\Http\Controllers\BlogLikeController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,12 +47,14 @@ Route::post('/players/create', [PlayerController::class, 'store'])->name('player
 Route::get('/teams', [TeamController::class, 'index'])->name('teams');
 Route::post('/teams/create', [TeamController::class, 'store'])->name('teams.store')->middleware(['auth', 'can:host']);
 
-
+Route::get('/tournaments', [TournamentController::class, 'index'])->name('tournaments');
+// Route::post('/tournaments/create', [TeamController::class, 'store'])->name('tournaments.store')->middleware(['auth', 'can:host']);
 
 Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'can:host']);
 
 Route::get('/admin/blogs', [AdminDashboardController::class, 'create_blog'])->name('admin.blogs')->middleware(['auth', 'can:host']);
 Route::get('/admin/teams', [AdminDashboardController::class, 'create_team'])->name('admin.teams')->middleware(['auth', 'can:host']);
+Route::get('/admin/tournaments', [AdminDashboardController::class, 'create_tournament'])->name('admin.tournaments')->middleware(['auth', 'can:host']);
 
 
 Route::controller(AuthController::class)->group(function () {

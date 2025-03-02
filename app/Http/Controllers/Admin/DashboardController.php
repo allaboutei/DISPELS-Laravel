@@ -22,4 +22,9 @@ class DashboardController extends Controller
         $games = Game::get();
         return view('admins.create-team',compact('games'));
     }
+
+    public function create_tournament(){
+        $games = Game::get();
+        return view('admins.create-tournament',compact('games'));
+    }
 }

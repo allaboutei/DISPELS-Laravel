@@ -17,11 +17,11 @@
     @endguest
 
     <!-- Carousel -->
-    <div class="relative w-full max-w-4xl mx-auto mt-8">
+    <div class="relative w-full max-w-4xl mx-auto mt-8 ">
         <div id="carousel" class="relative w-full overflow-hidden rounded-lg shadow-lg">
             <div class="carousel-inner flex transition-transform duration-500 ease-in-out">
                 @foreach ($games as $game)
-                <div class="carousel-item w-full flex-shrink-0">
+                <div class="carousel-item w-full flex-shrink-0 px-10">
                     <!-- Game Image -->
                     <img src="{{ $game->getImageURL() }}" class="mx-auto w-1/4  object-contain rounded-lg" alt="{{ $game->name }}">
 

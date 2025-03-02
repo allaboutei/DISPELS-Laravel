@@ -5,6 +5,6 @@
             class="fa-solid fa-newspaper hover:text-yellow-300  {{ Route::is('blogs') ? 'text-yellow-300' : '' }} "></i></a>
     <a href="{{ route('players') }}"><i class="fa-solid fa-user-group hover:text-yellow-300  {{ Route::is('players') ? 'text-yellow-300' : '' }}"></i></a>
     <a href="{{ route('teams') }}"><i class="fa-solid fa-shield-halved hover:text-yellow-300  {{ Route::is('teams') ? 'text-yellow-300' : '' }}"></i></a>
-    <a href="#"><i class="fa-solid fa-trophy"></i></a>
+    <a href="{{ route(name: 'tournaments') }}"><i class="fa-solid fa-trophy hover:text-yellow-300  {{ Route::is('tiurnaments') ? 'text-yellow-300' : '' }}"></i></a>
     <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
 </div>

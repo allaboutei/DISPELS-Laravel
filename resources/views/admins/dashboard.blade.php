@@ -16,6 +16,11 @@
                 🏆 Manage Teams
             </button>
         </a>
+        <a href="{{ route('admin.tournaments') }}" class="block">
+            <button class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300">
+                🏆 Manage Tournaments
+            </button>
+        </a>
     </div>
 </div>
 @endsection
