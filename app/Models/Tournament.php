@@ -18,8 +18,20 @@ class Tournament extends Model
         'image',
         'email',
     ];
+    protected $casts = [
+        'start' => 'datetime',
+        'end' => 'datetime',
+    ];
     public function game()
     {
         return $this->belongsTo(Game::class);
+    }
+    public function getImageURL()
+    {
+        if ($this->image) {
+            return url('storage/' . $this->image);
+        } else {
+            return asset('images/DISPELS.jpg');
+        }
     }
 }

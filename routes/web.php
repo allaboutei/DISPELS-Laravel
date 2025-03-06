@@ -48,7 +48,7 @@ Route::get('/teams', [TeamController::class, 'index'])->name('teams');
 Route::post('/teams/create', [TeamController::class, 'store'])->name('teams.store')->middleware(['auth', 'can:host']);
 
 Route::get('/tournaments', [TournamentController::class, 'index'])->name('tournaments');
-// Route::post('/tournaments/create', [TeamController::class, 'store'])->name('tournaments.store')->middleware(['auth', 'can:host']);
+Route::post('/tournaments/create', [TournamentController::class, 'store'])->name('tournaments.store')->middleware(['auth', 'can:host']);
 
 Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'can:host']);
 

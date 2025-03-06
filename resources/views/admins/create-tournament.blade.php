@@ -4,8 +4,9 @@
 
         <div class="container mx-auto px-6">
             <div class="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-md">
-                <h2 class="text-yellow-300 text-2xl font-bold">Upload the News</h2>
-                <form class="flex flex-col gap-4 text-white " action="" method="post" enctype="multipart/form-data">
+                <h2 class="text-yellow-300 text-2xl font-bold">Create a tournament</h2>
+                <form class="flex flex-col gap-4 text-white " action="{{ route('tournaments.store') }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
 
                     <label class="text-white font-semibold" for="game_id">Select Game</label>
@@ -20,58 +21,58 @@
                         <span class="text-sm text-red-500">{{ $message }}</span>
                     @enderror
 
-                    <label class="text-white font-semibold" for="title">Tournament Name</label>
+                    <label class="text-white font-semibold" for="name">Tournament Name</label>
                     <input
                         class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                        type="text" name="title" id="title">
-                    @error('title')
+                        type="text" name="name" id="name">
+                    @error('name')
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
 
-                    <label class="text-white font-semibold" for="body">Tournament Information</label>
+                    <label class="text-white font-semibold" for="info">Tournament Information</label>
                     <textarea
                         class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                        name="body" id="body">
+                        name="info" id="info">
                         </textarea>
-                    @error('body')
+                    @error('info')
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
 
-                    <label class="text-white font-semibold" for="title">Pricepool</label>
+                    <label class="text-white font-semibold" for="price">Pricepool</label>
                     <input
                         class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                        type="number" name="title" id="title">
-                    @error('title')
+                        type="number" name="price" id="price">
+                    @error('price')
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
 
-                    <label class="text-white font-semibold" for="title">Location</label>
+                    <label class="text-white font-semibold" for="location">Location</label>
                     <input
                         class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                        type="number" name="title" id="title">
-                    @error('title')
+                        type="text" name="location" id="location">
+                    @error('location')
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
 
-                    <label class="text-white font-semibold" for="title">Start Date</label>
+                    <label class="text-white font-semibold" for="start">Start Date</label>
                     <input
                         class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                        type="number" name="title" id="title">
-                    @error('title')
+                        type="date" name="start" id="start">
+                    @error('start')
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
 
-                    <label class="text-white font-semibold" for="title">End Date</label>
+                    <label class="text-white font-semibold" for="end">End Date</label>
                     <input
                         class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                        type="number" name="title" id="title">
-                    @error('title')
+                        type="date" name="end" id="end">
+                    @error('end')
                         <span class="text-sm text-red-600">{{ $message }}</span>
                     @enderror
 
 
 
-                    <label class="text-white font-semibold" for="image">News Image</label>
+                    <label class="text-white font-semibold" for="image">Tournament Image</label>
                     <input
                         class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
                         type="file" name="image" id="image">
