@@ -27,8 +27,8 @@ class Player extends Model
     {
         return $this->belongsTo(Player::class);
     }
-    public function role()
+    public function position()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Position::class);
     }
 }

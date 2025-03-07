@@ -26,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useTailwind();
 
-        Gate::policy(Blog::class, BlogPolicy::class);
+
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     @auth
-        @can('create', App\Models\Blog::class)
+
             <div class="container mx-auto px-6">
                 <div class="max-w-2xl mx-auto bg-gray-800 p-6 rounded-lg shadow-md">
                     <h2 class="text-yellow-300 text-2xl font-bold">Upload the News</h2>
@@ -40,6 +40,6 @@
                     </form>
                 </div>
             </div>
-        @endcan
+       
     @endauth
 @endsection

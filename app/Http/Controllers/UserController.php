@@ -34,7 +34,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
 
-        $this->authorize('update', $user);
+
         $editing = true;
         return view('users.show', compact('user', 'editing'));
     }
@@ -44,7 +44,7 @@ class UserController extends Controller
      */
     public function update(User $user)
     {
-        $this->authorize('update', $user);
+
 
         $validated = request()->validate([
             'name' => 'required|min:5|max:100',

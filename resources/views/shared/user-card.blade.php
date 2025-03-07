@@ -8,12 +8,10 @@
                 <i class="fa-solid fa-ban"></i> Cancel
             </a>
         @else
-            @can('update', $user)
-                <a href="{{ route('users.edit', $user->id) }}"
-                    class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition">
-                    <i class="fa-solid fa-pen-to-square"></i> Edit
-                </a>
-            @endcan
+            <a href="{{ route('users.edit', $user->id) }}"
+                class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition">
+                <i class="fa-solid fa-pen-to-square"></i> Edit
+            </a>
         @endif
 
     </div>
@@ -27,32 +25,32 @@
     @if ($editing ?? false)
         <div class="grid grid-cols-1 md:grid-cols-1 ">
             <div class="p-4 border border-yellow-400 rounded-lg">
-                @can('update', $user)
-                    <form class="flex flex-col gap-5 text-white " action="{{ route('users.update', $user->id) }}"
-                        method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
-                        <label for="name">Name</label>
-                        <input
-                            class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                            type="text" name="name" id="name" value="{{ $user->name }}">
-                        @error('name')
-                            <span class="text-sm text-red-600">{{ $message }}</span>
-                        @enderror
-                        <label for="image">Image</label>
-                        <input
-                            class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
-                            type="file" name="image" id="image">
-                        @error('image')
-                            <span class="text-sm text-red-600">{{ $message }}</span>
-                        @enderror
 
-                        <button
-                            class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition w-1/3 mx-auto">
-                            Upload
-                        </button>
-                    </form>
-                @endcan
+                <form class="flex flex-col gap-5 text-white " action="{{ route('users.update', $user->id) }}"
+                    method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <label for="name">Name</label>
+                    <input
+                        class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
+                        type="text" name="name" id="name" value="{{ $user->name }}">
+                    @error('name')
+                        <span class="text-sm text-red-600">{{ $message }}</span>
+                    @enderror
+                    <label for="image">Image</label>
+                    <input
+                        class="bg-gray-800 border border-gray-600 rounded py-2 px-3 text-white focus:outline-none focus:ring focus:ring-yellow-300"
+                        type="file" name="image" id="image">
+                    @error('image')
+                        <span class="text-sm text-red-600">{{ $message }}</span>
+                    @enderror
+
+                    <button
+                        class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition w-1/3 mx-auto">
+                        Upload
+                    </button>
+                </form>
+
             </div>
         </div>
     @else
@@ -68,7 +66,7 @@
                     <p><span class="font-semibold text-gray-400">User Email:</span> {{ $user->email }}</p>
                 </div>
                 <div class="bg-gray-800 p-3 rounded-lg shadow mt-2">
-                    <p><span class="font-semibold text-gray-400">Created:</span> {{ $user->created_at }}</p>
+                    <p><span class="font-semibold text-gray-400">Member Since:</span> {{ $user->created_at->format('o, F') }}</p>
                 </div>
             </div>
 

@@ -7,20 +7,15 @@
 
     <!-- Navigation Links -->
     <div class="flex items-center gap-6">
-        <a href="{{route('games')}}" class="text-yellow-400 text-xl hover:text-yellow-300 transition">
+        <a href="{{ route('games') }}" class="text-yellow-400 text-xl hover:text-yellow-300 transition">
             <i class="fa-solid fa-gamepad"></i>
         </a>
 
         @auth
-            @can('admin')
-                <a href="{{ route('admin.dashboard') }}" class="text-sm font-semibold hover:text-yellow-300">
-                    Admin Dashboard
-                </a>
-            @elsecan('host')
-                <a href="{{ route('admin.dashboard') }}" class="text-sm font-semibold hover:text-yellow-300">
-                    Host Dashboard
-                </a>
-            @endcan
+
+            <a href="{{ route('admin.dashboard') }}" class="text-sm font-semibold hover:text-yellow-300">
+                Admin Dashboard
+            </a>    
 
             <!-- User Info -->
             <div class="flex items-center gap-4">
@@ -35,8 +30,7 @@
                 <!-- Logout Form -->
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit"
-                        class="bg-gray-700 hover:bg-red-500 text-white py-2 px-3 rounded-lg transition">
+                    <button type="submit" class="bg-gray-700 hover:bg-red-500 text-white py-2 px-3 rounded-lg transition">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </form>

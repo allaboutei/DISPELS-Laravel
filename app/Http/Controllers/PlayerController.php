@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Player;
-use App\Models\Role;
+use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -16,14 +16,14 @@ class PlayerController extends Controller
     use AuthorizesRequests;
     public function index()
     {
-        return view('players.player',[
-            'players' => Player::with('role')->latest()->get()
+        return view('players.player', [
+            'players' => Player::with('position')->latest()->get()
         ]);
     }
     public function join(User $user)
     {
-        $this->authorize('create', Player::class);
-        $games = Game::with('roles')->get();
+
+        $games = Game::with('position')->get();
         return view('players.create-player', compact('games'));
     }
     public function store()

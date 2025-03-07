@@ -14,9 +14,7 @@ use Illuminate\Support\ServiceProvider;
 class AuthServiceProvider extends ServiceProvider
 {
 
-    protected $policies = [
-        Blog::class => BlogPolicy::class,
-    ];
+   
     public function register(): void
     {
         //
@@ -30,17 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        Gate::policy(Blog::class, BlogPolicy::class);
 
-        Gate::policy(User::class, UserPolicy::class);
-        Gate::policy(Player::class, PlayerPolicy::class);
-
-        Gate::define('admin', function (User $user): bool {
-            return (bool) $user->is_admin;
-        });
-        Gate::define('host', function (User $user): bool {
-            return (bool) $user->is_host;
-        });
 
 
 

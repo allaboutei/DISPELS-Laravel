@@ -35,7 +35,7 @@ Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
     });
 });
 
-Route::resource( 'users',UserController::class)->only('show','edit','delete','update')->middleware(['auth']);
+Route::resource('users', UserController::class)->only('show', 'edit', 'delete', 'update')->middleware(['auth']);
 
 Route::get('/players', [PlayerController::class, 'index'])->name('players');
 
@@ -45,16 +45,18 @@ Route::post('/players/create', [PlayerController::class, 'store'])->name('player
 
 
 Route::get('/teams', [TeamController::class, 'index'])->name('teams');
-Route::post('/teams/create', [TeamController::class, 'store'])->name('teams.store')->middleware(['auth', 'can:host']);
+Route::post('/teams/create', [TeamController::class, 'store'])->name('teams.store')->middleware(['auth']);
 
 Route::get('/tournaments', [TournamentController::class, 'index'])->name('tournaments');
-Route::post('/tournaments/create', [TournamentController::class, 'store'])->name('tournaments.store')->middleware(['auth', 'can:host']);
+Route::post('/tournaments/create', [TournamentController::class, 'store'])->name('tournaments.store')->middleware(['auth']);
 
-Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'can:host']);
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth']);
 
-Route::get('/admin/blogs', [AdminDashboardController::class, 'create_blog'])->name('admin.blogs')->middleware(['auth', 'can:host']);
-Route::get('/admin/teams', [AdminDashboardController::class, 'create_team'])->name('admin.teams')->middleware(['auth', 'can:host']);
-Route::get('/admin/tournaments', [AdminDashboardController::class, 'create_tournament'])->name('admin.tournaments')->middleware(['auth', 'can:host']);
+Route::get('/admin/blogs', [AdminDashboardController::class, 'create_blog'])->name('admin.blogs')->middleware(['auth']);
+Route::get('/admin/teams', [AdminDashboardController::class, 'create_team'])->name('admin.teams')->middleware(['auth']);
+Route::get('/admin/tournaments', [AdminDashboardController::class, 'create_tournament'])->name('admin.tournaments')->middleware(['auth']);
+
+Route::get('/admin/users', [AdminDashboardController::class, 'manage_user'])->name('admin.users')->middleware(['auth']);
 
 
 Route::controller(AuthController::class)->group(function () {

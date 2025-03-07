@@ -22,8 +22,8 @@ class Game extends Model
     public function tournaments(){
         return $this->hasMany(Tournament::class);
     }
-    public function roles(){
-        return $this->hasMany(related: Role::class);
+    public function positions(){
+        return $this->hasMany(related: Position::class);
     }
     public function getImageURL(){
         if ($this->image) {

@@ -53,16 +53,17 @@
 
 
 
-                @if (!request()->routeIs('blogs.show') && (strlen($blog->body) > 50))
-                <p class="text-md mt-2 text-gray-300">
-                    {{ Str::limit($blog->body, 50, '...') }}
-                    <a href="{{ route('blogs.show', $blog->id) }}" class="text-blue-400 hover:underline focus:outline-none">
-                        Read More
-                    </a>
-                </p>
-            @else
-                <p class="text-md mt-2 text-gray-300">{{ $blog->body }}</p>
-            @endif
+                @if (!request()->routeIs('blogs.show') && strlen($blog->body) > 50)
+                    <p class="text-md mt-2 text-gray-300">
+                        {{ Str::limit($blog->body, 50, '...') }}
+                        <a href="{{ route('blogs.show', $blog->id) }}"
+                            class="text-blue-400 hover:underline focus:outline-none">
+                            Read More
+                        </a>
+                    </p>
+                @else
+                    <p class="text-md mt-2 text-gray-300">{{ $blog->body }}</p>
+                @endif
 
 
 
@@ -72,33 +73,30 @@
             <div class="flex flex-col min-w-fit px-2 gap-3">
                 @if (!request()->routeIs('blogs.show'))
                     <a href="{{ route('blogs.show', $blog->id) }}">
-                        <button
-                            class="btn-blue">
+                        <button class="btn-blue">
                             <i class="fa-solid fa-circle-info"></i>
                         </button>
                     </a>
                 @endif
 
                 @auth
-                    @can('update', $blog)
-                        @if (request()->routeIs('blogs.show'))
-                            <a href="{{ route('blogs.edit', $blog->id) }}">
-                                <button
-                                    class="btn-yellow">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                            </a>
 
-                            <form action="{{ route('blogs.destroy', $blog) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button
-                                    class="btn-red">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
-                        @endif
-                    @endcan
+                    @if (request()->routeIs('blogs.show'))
+                        <a href="{{ route('blogs.edit', $blog->id) }}">
+                            <button class="btn-yellow">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </a>
+
+                        <form action="{{ route('blogs.destroy', $blog) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn-red">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    @endif
+
                 @endauth
 
                 @include('blogs.like')

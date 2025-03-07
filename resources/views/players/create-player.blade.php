@@ -41,12 +41,12 @@
                 <span class="text-sm text-red-500">{{ $message }}</span>
             @enderror
                 <!-- Role Selection -->
-                <label class="text-white font-semibold" for="role_id">Select Position</label>
-                <select name="role_id" id="role_id" value="role_id"
+                <label class="text-white font-semibold" for="position_id">Select Position</label>
+                <select name="position_id" id="position_id" value="position_id"
                     class="bg-gray-700 border border-gray-600 rounded py-2 px-3 text-white focus:ring focus:ring-yellow-300">
                     <option value="" disabled selected>Select a game first</option>
                 </select>
-                @error('role_id')
+                @error('position_id')
                 <span class="text-sm text-red-500">{{ $message }}</span>
             @enderror
 
@@ -71,19 +71,19 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const gameSelect = document.getElementById('game_id');
-            const roleSelect = document.getElementById('role_id');
-            const gameRoles = @json($games); // Pass game data as JSON
+            const positionSelect = document.getElementById('position_id');
+            const gamePositions = @json($games); // Pass game data as JSON
 
             gameSelect.addEventListener('change', function() {
-                roleSelect.innerHTML =
-                    '<option value="" disabled selected>Select a role</option>'; // Reset roles
+                positionSelect.innerHTML =
+                    '<option value="" disabled selected>Select a preferred position</option>'; // Reset roles
                 const selectedGameId = this.value;
-                const selectedGame = gameRoles.find(game => game.id == selectedGameId);
+                const selectedGame = gamePositions.find(game => game.id == selectedGameId);
 
                 if (selectedGame) {
-                    selectedGame.roles.forEach(role => {
-                        let option = new Option(role.name, role.id);
-                        roleSelect.add(option);
+                    selectedGame.positions.forEach(position => {
+                        let option = new Option(position.name, position.id);
+                        positionSelect.add(option);
                     });
                 }
             });
