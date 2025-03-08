@@ -19,20 +19,20 @@ class DashboardController extends Controller
     public function create_blog()
     {
 
-        return view('admins.create-blog');
+        return view('admins.blogs.create-blog');
     }
     public function create_team()
     {
         $games = Game::get();
-        return view('admins.create-team', compact('games'));
+        return view('admins.teams.create-team', compact('games'));
     }
 
     public function create_tournament()
     {
         $games = Game::all();
-        return view('admins.create-tournament', compact('games'));
+        return view('admins.tournaments.create-tournament', compact('games'));
     }
-    public function manage_user()
+    public function index_user()
     {
         $users = User::get();
         return view('admins.users.manage_user', compact('users'));

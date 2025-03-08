@@ -56,7 +56,7 @@ Route::get('/admin/blogs', [AdminDashboardController::class, 'create_blog'])->na
 Route::get('/admin/teams', [AdminDashboardController::class, 'create_team'])->name('admin.teams')->middleware(['auth']);
 Route::get('/admin/tournaments', [AdminDashboardController::class, 'create_tournament'])->name('admin.tournaments')->middleware(['auth']);
 
-Route::get('/admin/users', [AdminDashboardController::class, 'manage_user'])->name('admin.users')->middleware(['auth']);
+Route::get('/admin/users', [AdminDashboardController::class, 'index_user'])->name('admin.users')->middleware(['auth']);
 
 
 Route::controller(AuthController::class)->group(function () {
