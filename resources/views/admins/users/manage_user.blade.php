@@ -21,7 +21,7 @@
                             <td class="p-3">{{ $user->name }}</td>
                             <td class="p-3">{{ $user->email }}</td>
                             <td class="p-3">
-                                {{ $user->getRoleNames()->implode(', ') }}
+                             
                             </td>
                             <td class="p-3">
                                 <span class="px-2 py-2 text-sm font-semibold
@@ -29,7 +29,7 @@
                                     {{ $user->status ? 'Not Implemented' : 'Not Implemented' }}
                                 </span>
                             </td>
-                            <td class="p-3">    
+                            <td class="p-3">
                                 <a href=""
                                     class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 text-sm rounded">
                                     Edit
