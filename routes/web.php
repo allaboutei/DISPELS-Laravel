@@ -10,6 +10,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminOrOrganizer;
 use Illuminate\Support\Facades\Route;
 
 Route::get('', [DashboardController::class, 'index'])->name('home');
@@ -50,13 +51,13 @@ Route::post('/teams/create', [TeamController::class, 'store'])->name('teams.stor
 Route::get('/tournaments', [TournamentController::class, 'index'])->name('tournaments');
 Route::post('/tournaments/create', [TournamentController::class, 'store'])->name('tournaments.store')->middleware(['auth']);
 
-Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth']);
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth','admin']);
 
-Route::get('/admin/blogs', [AdminDashboardController::class, 'create_blog'])->name('admin.blogs')->middleware(['auth']);
-Route::get('/admin/teams', [AdminDashboardController::class, 'create_team'])->name('admin.teams')->middleware(['auth']);
-Route::get('/admin/tournaments', [AdminDashboardController::class, 'create_tournament'])->name('admin.tournaments')->middleware(['auth']);
+Route::get('/admin/blogs', [AdminDashboardController::class, 'create_blog'])->name('admin.blogs')->middleware(['auth','admin']);
+Route::get('/admin/teams', [AdminDashboardController::class, 'create_team'])->name('admin.teams')->middleware(['auth','admin']);
+Route::get('/admin/tournaments', [AdminDashboardController::class, 'create_tournament'])->name('admin.tournaments')->middleware(['auth','admin']);
 
-Route::get('/admin/users', [AdminDashboardController::class, 'index_user'])->name('admin.users')->middleware(['auth']);
+Route::get('/admin/users', [AdminDashboardController::class, 'index_user'])->name('admin.users')->middleware(['auth','admin']);
 
 
 Route::controller(AuthController::class)->group(function () {

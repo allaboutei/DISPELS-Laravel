@@ -28,14 +28,14 @@ class BlogController extends Controller
 
     public function edit(Blog $blog)
     {
-
+        $this->authorize('manage', Blog::class);
         $editing = true;
         return view('blogs.show', compact('blog', 'editing'));
     }
 
     public function update(Blog $blog)
     {
-
+        $this->authorize('manage', Blog::class);
         $validated = request()->validate([
             'title' => 'required|min:2|max:200',
             'body' => 'required |min:50|max:4000',
@@ -64,9 +64,10 @@ class BlogController extends Controller
 
     public function store(Blog $blog)
     {
+        $this->authorize('manage', Blog::class);
         $validated = request()->validate([
             'title' => 'required|min:2|max:200',
-            'body' => 'required |min:50|max:4000',
+            'body' => 'required |min:10|max:4000',
             'image' => 'nullable|image'
         ]);
 
@@ -87,7 +88,7 @@ class BlogController extends Controller
     }
     public function destroy(Blog $blog)
     {
-       
+        $this->authorize('manage', Blog::class);
         $blog->delete();
         return redirect()->route('blogs')->with([
             'status' => 'success',

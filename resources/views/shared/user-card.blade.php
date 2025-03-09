@@ -8,10 +8,14 @@
                 <i class="fa-solid fa-ban"></i> Cancel
             </a>
         @else
+        @can('manage',$user)
+
+
             <a href="{{ route('users.edit', $user->id) }}"
                 class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded transition">
                 <i class="fa-solid fa-pen-to-square"></i> Edit
             </a>
+            @endcan
         @endif
 
     </div>

@@ -12,11 +12,13 @@
         </a>
 
         @auth
+@can('admin')
+
 
             <a href="{{ route('admin.dashboard') }}" class="text-sm font-semibold hover:text-yellow-300">
                 Admin Dashboard
-            </a>    
-
+            </a>
+            @endcan
             <!-- User Info -->
             <div class="flex items-center gap-4">
                 <p class="text-sm font-semibold">{{ Auth::user()->name }}</p>

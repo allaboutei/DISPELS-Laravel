@@ -9,24 +9,28 @@
             </div>
 
             @auth
-            @if (!auth()->user()->is_admin && !auth()->user()->is_host)
-                @php
-                    $is_player = \App\Models\Player::where('user_id', auth()->id())->first();
-                @endphp
 
-                @if ($is_player)
-                    <div>
-                        <span>You are already registered as a player!</span>
-                        <a class="btn-blue ml-5" href="{{ route('users.show', Auth::user()->id) }}">Go to Profile</a>
-                    </div>
+                @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('organizer'))
                 @else
-                    <div>
-                        <span>Ready to join the teams and compete in exciting matches?</span>
-                        <a class="btn-blue ml-5" href="{{ route('players.join') }}">Fill Form</a>
-                    </div>
+                    @php
+                        $is_player = \App\Models\Player::where('user_id', auth()->id())->first();
+                    @endphp
+
+                    @if ($is_player)
+                        <div>
+                            <span>You are already registered as a player!</span>
+                            <a class="btn-blue ml-5" href="{{ route('users.show', Auth::user()->id) }}">Go to Profile</a>
+                        </div>
+                    @else
+                        <div>
+                            <span>Ready to join the teams and compete in exciting matches?</span>
+                            <a class="btn-blue ml-5" href="{{ route('players.join') }}">Fill Form</a>
+                        </div>
+                    @endif
                 @endif
-            @endif
-        @endauth
+
+
+            @endauth
 
 
             @guest
@@ -41,10 +45,10 @@
         <!-- Players Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @forelse ($players as $player)
-            @include('shared.player-card')
- @empty
-<p>No Player Found</p>
- @endforelse
+                @include('shared.player-card')
+            @empty
+                <p>No Player Found</p>
+            @endforelse
 
         </div>
     </div>

@@ -22,12 +22,13 @@ class PlayerController extends Controller
     }
     public function join(User $user)
     {
-
+$this->authorize('create', $user);
         $games = Game::with('position')->get();
         return view('players.create-player', compact('games'));
     }
-    public function store()
+    public function store(User $user)
     {
+        $this->authorize('create', $user);
         $validated = request()->validate([
             'gamertag' => 'required|min:5|max:50',
             'phone' => 'required|min:5|max:15',

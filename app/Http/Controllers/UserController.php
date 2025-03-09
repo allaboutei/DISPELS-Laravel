@@ -33,7 +33,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-
+        $this->authorize('manage', $user);
 
         $editing = true;
         return view('users.show', compact('user', 'editing'));
@@ -45,7 +45,7 @@ class UserController extends Controller
     public function update(User $user)
     {
 
-
+        $this->authorize('manage', $user);
         $validated = request()->validate([
             'name' => 'required|min:5|max:100',
             'image' => 'nullable|image'

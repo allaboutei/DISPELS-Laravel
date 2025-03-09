@@ -80,6 +80,8 @@
                 @endif
 
                 @auth
+@can('manage',$blog)
+
 
                     @if (request()->routeIs('blogs.show'))
                         <a href="{{ route('blogs.edit', $blog->id) }}">
@@ -96,7 +98,7 @@
                             </button>
                         </form>
                     @endif
-
+                    @endcan
                 @endauth
 
                 @include('blogs.like')
